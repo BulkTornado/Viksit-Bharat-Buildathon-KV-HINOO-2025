@@ -1,0 +1,34 @@
+{
+    "databases": [
+        [
+            "BigBasket",
+            "06BLYPR9629A1ZH"
+        ],
+        [
+            "IRCTC",
+            "07AAACI7074F1ZM"
+        ],
+        [
+            "RailYatri",
+            "33AAAGM0289C1ZQ"
+        ],
+        [
+            "Myntra",
+            "07AAECM9636P1ZP"
+        ],
+        [
+            "BlinkIt",
+            "27AAFCB8122L1ZI"
+        ],
+        [
+            "Flipkart",
+            "07AABCF8078M1Z3"
+        ],
+        [
+            "Amazon",
+            "29AAICA3918J1ZE"
+        ]
+    ],
+    "user": "root",
+    "passwd": "tks@123?"
+}
