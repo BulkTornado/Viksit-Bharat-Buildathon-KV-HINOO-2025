@@ -14,7 +14,7 @@ date_with_time: list[str] = [date.strftime('%Y-%m-%d %H:%M:%S') for date in date
 program_start_time = pct()
 
 with ConnectToMySQL('localhost', 'root', 'tks@123?') as conn_ob:
-    conn_ob.execute_sql_query("USE BigBasket;")
+    conn_ob.execute_sql_query("USE Amazon;")
     conn_ob.execute_sql_query("SELECT customer_id FROM customer_information;")
     customer_id = conn_ob.fetch_data() # FETCHES ALL DATA
     # IMPORTANT: Data fetched in the format [(*,), (*,)]
@@ -22,11 +22,15 @@ with ConnectToMySQL('localhost', 'root', 'tks@123?') as conn_ob:
 
 payment_mode = ['CREDIT', 'DEBIT', 'UPI', 'CASH']
 
+history_of_transaction_id: list[int] = []
+
+
 transaction_info: list[tuple] = []
 
 # 50,000 unique transaction id's
 range_of_id = range(100_000_000, 1_000_000_000, 18_000)
 
+# unique_id = sorted(random.sample(range_of_id, 50_000))
 
 for index in range_of_id:
     t_id = random.randint(index, index + 18_000)
@@ -36,17 +40,17 @@ for index in range_of_id:
     order_amount = random.randint(0, 50_000) + random.choice([0.25, 0.75, 0.50])
     order_date = date_with_time[len(transaction_info)]
 
-    _ = (t_id, c_id, t_payment_mode, t_city, order_amount, order_date)
+    _ = (t_id, c_id, t_payment_mode, t_city, order_amount, order_date) #
     transaction_info.append(_)
 
 sql_query = "INSERT INTO transactions_table VALUES"
+#sql_query = "INSERT INTO transactions_table (customer_id, payment_mode, transaction_city, order_amount, order_date) VALUES"
+
 
 with ConnectToMySQL('localhost', 'root', 'tks@123?') as conn_ob:
-    conn_ob.execute_sql_query("USE BigBasket;")
+    conn_ob.execute_sql_query("USE Amazon;")
     for _ in range(0, len(transaction_info), 100):
         batch = transaction_info[_:_+100]
-        if not batch:
-            continue
         conn_ob.execute_sql_query(f"{sql_query} {', '.join(map(str, batch))};")
     conn_ob.execute_sql_query("COMMIT;")
 

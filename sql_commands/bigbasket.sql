@@ -2,12 +2,12 @@ CREATE DATABASE BigBasket;
 USE BigBasket;
 
 -- GSINT required state codes
-CREATE TABLE indian_state_codes
+CREATE TABLE indian_states
 (
-    state_code TINYINT(2) UNSIGNED PRIMARY KEY,
-    state VARCHAR(40) UNIQUE NOT NULL
+    state_code TINYINT UNSIGNED PRIMARY KEY,
+    state_name VARCHAR(40) UNIQUE NOT NULL
 );
-INSERT INTO indian_state_codes VALUES
+INSERT INTO indian_states VALUES
     (01, 'JAMMU AND KASHMIR'),
     (02, 'HIMACHAL PRADESH'),
     (03, 'PUNJAB'),
@@ -52,12 +52,13 @@ CREATE TABLE customer_information
     customer_id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
     customer_name VARCHAR(80) NOT NULL,
 
-    customer_email VARCHAR(100) NOT NULL UNIQUE,
+    customer_email_address VARCHAR(100) NOT NULL UNIQUE,
     customer_mobile_number BIGINT UNSIGNED NOT NULL UNIQUE
         CHECK (customer_mobile_number BETWEEN 6000000000 and 9999999999),
-    customer_address VARCHAR(255) DEFAULT NULL,
-    password_hash VARCHAR(128) NOT NULL,
-    signup_date DATETIME DEFAULT CURRENT_TIMESTAMP
+
+    customer_physical_address VARCHAR(255) DEFAULT NULL,
+    customer_password_hash VARCHAR(128) NOT NULL,
+    customer_signup_date DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE transactions_table
@@ -65,9 +66,7 @@ CREATE TABLE transactions_table
     transaction_id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
     customer_id BIGINT UNSIGNED NOT NULl,
 
-    transaction_mode ENUM('ONLINE', 'OFFLINE') DEFAULT 'OFFLINE' NOT NULL,
     payment_mode ENUM('CREDIT', 'DEBIT', 'UPI', 'CASH') DEFAULT 'CASH' NOT NULl,
-    delivery_status ENUM('Y', 'N') DEFAULT 'N' NOT NULL,
     transaction_city TINYINT UNSIGNED NOT NULL
         CHECK (transaction_city BETWEEN 1 AND 37),
 
@@ -77,5 +76,5 @@ CREATE TABLE transactions_table
 
     FOREIGN KEY (customer_id) REFERENCES customer_information(customer_id)
         ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (transaction_city) REFERENCES indian_state_codes(state_code)
+    FOREIGN KEY (transaction_city) REFERENCES indian_states(state_code)
 );

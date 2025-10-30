@@ -2,7 +2,8 @@
     "databases": [
         [
             "BigBasket",
-            "06BLYPR9629A1ZH"
+            "06BLYPR9629A1ZH",
+            "2025-07-01"
         ],
         [
             "IRCTC",
@@ -30,5 +31,7 @@
         ]
     ],
     "user": "root",
-    "passwd": "tks@123?"
+    "passwd": "",
+    "title": "Cyber Security",
+    "geometry": "800x600"
 }

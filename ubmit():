@@ -1,0 +1,236 @@
+Help on class PhotoImage in module tkinter:
+
+class PPhhoottooIImmaaggee(Image)
+ |  PhotoImage(name=None, cnf={}, master=None, **kw)
+ |
+ |  Widget which can display images in PGM, PPM, GIF, PNG format.
+ |
+ |  Method resolution order:
+ |      PhotoImage
+ |      Image
+ |      builtins.object
+ |
+ |  Methods defined here:
+ |
+ |  ____ggeettiitteemm____(self, key)
+ |
+ |  ____iinniitt____(self, name=None, cnf={}, master=None, **kw)
+ |      Create an image with NAME.
+ |
+ |      Valid resource names: data, format, file, gamma, height, palette,
+ |      width.
+ |
+ |  bbllaannkk(self)
+ |      Display a transparent image.
+ |
+ |  ccggeett(self, option)
+ |      Return the value of OPTION.
+ |
+ |  ccooppyy(self, *, from_coords=None, zoom=None, subsample=None)
+ |      Return a new PhotoImage with the same image as this widget.
+ |
+ |      The FROM_COORDS option specifies a rectangular sub-region of the
+ |      source image to be copied. It must be a tuple or a list of 1 to 4
+ |      integers (x1, y1, x2, y2).  (x1, y1) and (x2, y2) specify diagonally
+ |      opposite corners of the rectangle.  If x2 and y2 are not specified,
+ |      the default value is the bottom-right corner of the source image.
+ |      The pixels copied will include the left and top edges of the
+ |      specified rectangle but not the bottom or right edges.  If the
+ |      FROM_COORDS option is not given, the default is the whole source
+ |      image.
+ |
+ |      If SUBSAMPLE or ZOOM are specified, the image is transformed as in
+ |      the subsample() or zoom() methods.  The value must be a single
+ |      integer or a pair of integers.
+ |
+ |  ccooppyy__rreeppllaaccee(
+ |      self,
+ |      sourceImage,
+ |      *,
+ |      from_coords=None,
+ |      to=None,
+ |      shrink=False,
+ |      zoom=None,
+ |      subsample=None,
+ |      compositingrule=None
+ |  )
+ |      Copy a region from the source image (which must be a PhotoImage) to
+ |      this image, possibly with pixel zooming and/or subsampling.  If no
+ |      options are specified, this command copies the whole of the source
+ |      image into this image, starting at coordinates (0, 0).
+ |
+ |      The FROM_COORDS option specifies a rectangular sub-region of the
+ |      source image to be copied. It must be a tuple or a list of 1 to 4
+ |      integers (x1, y1, x2, y2).  (x1, y1) and (x2, y2) specify diagonally
+ |      opposite corners of the rectangle.  If x2 and y2 are not specified,
+ |      the default value is the bottom-right corner of the source image.
+ |      The pixels copied will include the left and top edges of the
+ |      specified rectangle but not the bottom or right edges.  If the
+ |      FROM_COORDS option is not given, the default is the whole source
+ |      image.
+ |
+ |      The TO option specifies a rectangular sub-region of the destination
+ |      image to be affected.  It must be a tuple or a list of 1 to 4
+ |      integers (x1, y1, x2, y2).  (x1, y1) and (x2, y2) specify diagonally
+ |      opposite corners of the rectangle.  If x2 and y2 are not specified,
+ |      the default value is (x1,y1) plus the size of the source region
+ |      (after subsampling and zooming, if specified).  If x2 and y2 are
+ |      specified, the source region will be replicated if necessary to fill
+ |      the destination region in a tiled fashion.
+ |
+ |      If SHRINK is true, the size of the destination image should be
+ |      reduced, if necessary, so that the region being copied into is at
+ |      the bottom-right corner of the image.
+ |
+ |      If SUBSAMPLE or ZOOM are specified, the image is transformed as in
+ |      the subsample() or zoom() methods.  The value must be a single
+ |      integer or a pair of integers.
+ |
+ |      The COMPOSITINGRULE option specifies how transparent pixels in the
+ |      source image are combined with the destination image.  When a
+ |      compositing rule of 'overlay' is set, the old contents of the
+ |      destination image are visible, as if the source image were printed
+ |      on a piece of transparent film and placed over the top of the
+ |      destination.  When a compositing rule of 'set' is set, the old
+ |      contents of the destination image are discarded and the source image
+ |      is used as-is.  The default compositing rule is 'overlay'.
+ |
+ |  ddaattaa(self, format=None, *, from_coords=None, background=None, grayscale=False)
+ |      Returns image data.
+ |
+ |      The FORMAT option specifies the name of the image file format
+ |      handler to be used.  If this option is not given, this method uses
+ |      a format that consists of a tuple (one element per row) of strings
+ |      containing space-separated (one element per pixel/column) colors
+ |      in “#RRGGBB” format (where RR is a pair of hexadecimal digits for
+ |      the red channel, GG for green, and BB for blue).
+ |
+ |      The FROM_COORDS option specifies a rectangular region of the image
+ |      to be returned.  It must be a tuple or a list of 1 to 4 integers
+ |      (x1, y1, x2, y2).  If only x1 and y1 are specified, the region
+ |      extends from (x1,y1) to the bottom-right corner of the image.  If
+ |      all four coordinates are given, they specify diagonally opposite
+ |      corners of the rectangular region, including (x1, y1) and excluding
+ |      (x2, y2).  The default, if this option is not given, is the whole
+ |      image.
+ |
+ |      If BACKGROUND is specified, the data will not contain any
+ |      transparency information.  In all transparent pixels the color will
+ |      be replaced by the specified color.
+ |
+ |      If GRAYSCALE is true, the data will not contain color information.
+ |      All pixel data will be transformed into grayscale.
+ |
+ |  ggeett(self, x, y)
+ |      Return the color (red, green, blue) of the pixel at X,Y.
+ |
+ |  ppuutt(self, data, to=None)
+ |      Put row formatted colors to image starting from
+ |      position TO, e.g. image.put("{red green} {blue yellow}", to=(4,6))
+ |
+ |  rreeaadd(self, filename, format=None, *, from_coords=None, to=None, shrink=False)
+ |      Reads image data from the file named FILENAME into the image.
+ |
+ |      The FORMAT option specifies the format of the image data in the
+ |      file.
+ |
+ |      The FROM_COORDS option specifies a rectangular sub-region of the image
+ |      file data to be copied to the destination image.  It must be a tuple
+ |      or a list of 1 to 4 integers (x1, y1, x2, y2).  (x1, y1) and
+ |      (x2, y2) specify diagonally opposite corners of the rectangle.  If
+ |      x2 and y2 are not specified, the default value is the bottom-right
+ |      corner of the source image.  The default, if this option is not
+ |      specified, is the whole of the image in the image file.
+ |
+ |      The TO option specifies the coordinates of the top-left corner of
+ |      the region of the image into which data from filename are to be
+ |      read.  The default is (0, 0).
+ |
+ |      If SHRINK is true, the size of the destination image will be
+ |      reduced, if necessary, so that the region into which the image file
+ |      data are read is at the bottom-right corner of the image.
+ |
+ |  ssuubbssaammppllee(self, x, y='', *, from_coords=None)
+ |      Return a new PhotoImage based on the same image as this widget
+ |      but use only every Xth or Yth pixel.  If Y is not given, the
+ |      default value is the same as X.
+ |
+ |      The FROM_COORDS option specifies a rectangular sub-region of the
+ |      source image to be copied, as in the copy() method.
+ |
+ |  ttrraannssppaarreennccyy__ggeett(self, x, y)
+ |      Return True if the pixel at x,y is transparent.
+ |
+ |  ttrraannssppaarreennccyy__sseett(self, x, y, boolean)
+ |      Set the transparency of the pixel at x,y.
+ |
+ |  wwrriittee(
+ |      self,
+ |      filename,
+ |      format=None,
+ |      from_coords=None,
+ |      *,
+ |      background=None,
+ |      grayscale=False
+ |  )
+ |      Writes image data from the image to a file named FILENAME.
+ |
+ |      The FORMAT option specifies the name of the image file format
+ |      handler to be used to write the data to the file.  If this option
+ |      is not given, the format is guessed from the file extension.
+ |
+ |      The FROM_COORDS option specifies a rectangular region of the image
+ |      to be written to the image file.  It must be a tuple or a list of 1
+ |      to 4 integers (x1, y1, x2, y2).  If only x1 and y1 are specified,
+ |      the region extends from (x1,y1) to the bottom-right corner of the
+ |      image.  If all four coordinates are given, they specify diagonally
+ |      opposite corners of the rectangular region.  The default, if this
+ |      option is not given, is the whole image.
+ |
+ |      If BACKGROUND is specified, the data will not contain any
+ |      transparency information.  In all transparent pixels the color will
+ |      be replaced by the specified color.
+ |
+ |      If GRAYSCALE is true, the data will not contain color information.
+ |      All pixel data will be transformed into grayscale.
+ |
+ |  zzoooomm(self, x, y='', *, from_coords=None)
+ |      Return a new PhotoImage with the same image as this widget
+ |      but zoom it with a factor of X in the X direction and Y in the Y
+ |      direction.  If Y is not given, the default value is the same as X.
+ |
+ |      The FROM_COORDS option specifies a rectangular sub-region of the
+ |      source image to be copied, as in the copy() method.
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from Image:
+ |
+ |  ____ddeell____(self)
+ |
+ |  ____sseettiitteemm____(self, key, value)
+ |
+ |  ____ssttrr____(self)
+ |      Return str(self).
+ |
+ |  ccoonnffiigg = configure(self, **kw)
+ |
+ |  ccoonnffiigguurree(self, **kw)
+ |      Configure the image.
+ |
+ |  hheeiigghhtt(self)
+ |      Return the height of the image.
+ |
+ |  ttyyppee(self)
+ |      Return the type of the image, e.g. "photo" or "bitmap".
+ |
+ |  wwiiddtthh(self)
+ |      Return the width of the image.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from Image:
+ |
+ |  ____ddiicctt____
+ |      dictionary for instance variables
+ |
+ |  ____wweeaakkrreeff____
+ |      list of weak references to the object

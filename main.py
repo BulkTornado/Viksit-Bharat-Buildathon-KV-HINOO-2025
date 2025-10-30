@@ -2,9 +2,5 @@
 Python project for Cybersecurity
 """
 
-import argparse
-import sys
-import os
-import pathlib
-import mysql.connector as _mysql
+import pathlib, argparse, sys, os
 from function_modules import ConnectToMySQL

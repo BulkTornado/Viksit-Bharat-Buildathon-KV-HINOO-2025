@@ -54,7 +54,6 @@ history_of_number: list[int] = []
 
 customer_info: list[tuple] = []
 
-# Adding 10,000 customers
 range_of_id = range(100_000_000, 1_000_000_000, 90_000)
 
 for index in range_of_id:
@@ -85,14 +84,14 @@ for index in range_of_id:
         customer_info.append(_)
         break
 
-sql_query = "INSERT INTO customer_information VALUES"
+sql_query = 'INSERT INTO customer_information VALUES'
 
 with ConnectToMySQL('localhost', 'root', 'tks@123?') as conn_ob:
-    conn_ob.execute_sql_query("USE BigBasket;")
+    conn_ob.execute_sql_query('USE Amazon;')
     for _ in range(0, len(customer_info), 100):
         batch = customer_info[_:_+100]
-        conn_ob.execute_sql_query(f"{sql_query} {', '.join(map(str, batch))};")
-    conn_ob.execute_sql_query("COMMIT;")
+        conn_ob.execute_sql_query(f'{sql_query} {', '.join(map(str, batch))};')
+    conn_ob.execute_sql_query('COMMIT;')
 
 program_end_time = pct()
 print(f"Generated and inserted {len(customer_info):,} customer records.")
