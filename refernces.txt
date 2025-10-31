@@ -1,2 +1,5 @@
 https://findgst.in/gst-code-states
 https://knowyourgst.com
+https://www.geeksforgeeks.org/python/how-to-add-an-image-in-tkinter/
+https://www.pythontutorial.net/tkinter/tkinter-grid/
+https://www.geeksforgeeks.org/python/how-to-resize-image-in-python-tkinter/

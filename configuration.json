@@ -32,6 +32,50 @@
     ],
     "user": "root",
     "passwd": "",
-    "title": "Cyber Security",
-    "geometry": "800x600"
+    "title": [
+        "Cyber Security",
+        2,
+        1
+    ],
+    "geometry": [
+        840,
+        613
+    ],
+    "assets": [
+        [
+            "assets/transparent.png",
+            [
+                100,
+                100
+            ]
+        ],
+        [
+            "assets/cyber_security_lock1.png",
+            [
+                100,
+                100
+            ]
+        ],
+        [
+            "assets/cyber_security_lock2.png",
+            [
+                100,
+                100
+            ]
+        ],
+        [
+            "assets/cyber_security_vector_images.jpeg",
+            [
+                100,
+                100
+            ]
+        ],
+        [
+            "assets/viksit-bharat-buildathon.jpeg",
+            [
+                100,
+                100
+            ]
+        ]
+    ]
 }
