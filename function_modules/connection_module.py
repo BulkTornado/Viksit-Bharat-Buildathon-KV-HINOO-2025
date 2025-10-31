@@ -1,6 +1,6 @@
 import mysql.connector as _mysql
 import sys
-
+from tabulate import tabulate
 """try:
 
     ...
@@ -15,26 +15,26 @@ except Exception as error:
     sys.exit()"""
 
 class ConnectToMySQL:
-    def __init__(self, host: str, user: str, passwd: str) -> None:
+    def __init__(self, host: str, user: str, passwd: str):
         self._host = host
         self._user = user
         self._passwd = passwd
-
-    #connect_to_database
-    def __enter__(self):
         self._db_connection = _mysql.connect(
             host=self._host,
             user=self._user,
             passwd=self._passwd
         )
         self._cursor_object = self._db_connection.cursor()
+
+
+    #connect_to_database
+    def __enter__(self):
         return self
 
-    """def create_cursor_object(self) -> None:"""
 
     def execute_sql_query(self, sql_query: str) -> None:
         try:
-            print(f"[DEV MODE] Executing SQL Query: \n{sql_query}\n")
+            #print(f"[DEV MODE] Executing SQL Query: \n{sql_query}\n")
             self._cursor_object.execute(sql_query)
         except Exception as error:
             self.show_exception_traceback(error)
@@ -80,4 +80,14 @@ class ConnectToMySQL:
 
 if __name__ == "__main__":
     print("You are not supposed to run this program by itself.")
-    sys.exit()
+    #sys.exit()
+    with ConnectToMySQL('localhost', 'root', 'tks@123?') as c:
+        c.execute_sql_query('USE Amazon;')
+        c.execute_sql_query('SELECT * FROM customer_information WHERE customer_email_address = \'roy982shruti@gmail.com\';')
+
+        _ = c.fetch_data()
+        print(_[0][0]) # type: ignore
+        column = [desc[0] for desc in c.get_column_name()] # type: ignore
+
+        #with open('t.txt', 'w') as f:
+        print(tabulate(_, headers=column, tablefmt='simple'))
