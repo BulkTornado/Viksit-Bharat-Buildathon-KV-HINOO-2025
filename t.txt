@@ -1,0 +1,2 @@
+customer_id    customer_name    customer_email_address    customer_mobile_number    customer_physical_address    customer_password_hash    customer_signup_date
+-------------  ---------------  ------------------------  ------------------------  ---------------------------  ------------------------  ----------------------

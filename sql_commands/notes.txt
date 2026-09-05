@@ -1,0 +1,2 @@
+Run a SQL script by doing the following in MySQL command line:
+mysql> source ~/path/to/file/sql_script.sql;
